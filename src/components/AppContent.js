@@ -17,8 +17,9 @@ const AppContent = () => {
                   key={idx}
                   path={route.path}
                   exact={route.exact}
-                  name={route.name}
+                  name={route.name} 
                   element={<route.element />}
+                  render= {routeProps =><route.element {...routeProps} key={document.location.href} />}
                 />
               )
             )
@@ -30,4 +31,4 @@ const AppContent = () => {
   )
 }
 
-export default React.memo(AppContent)
+export default AppContent

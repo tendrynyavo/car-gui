@@ -27,6 +27,22 @@ const _nav = [
     },
   },
   {
+    component: CNavGroup,
+    name: 'Categorie',
+    items : [
+      {
+        component: CNavItem,
+        name: 'Liste categories',
+        to: '/categorie'
+      },
+      {
+        component: CNavItem,
+        name: 'Ajouter Categorie',
+        to: '/ajouter-categorie'
+      },
+    ]
+  },
+  {
     component: CNavTitle,
     name: 'Theme',
   },
