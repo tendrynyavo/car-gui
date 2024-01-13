@@ -22,6 +22,7 @@ import {
   CToast,
   CToastHeader,
   CToastBody,
+  CToastClose,
 } from '@coreui/react'
 import { CChartLine } from '@coreui/react-chartjs'
 import { getStyle, hexToRgba } from '@coreui/utils'
@@ -50,15 +51,15 @@ import {
 } from '@coreui/icons'
 
 
-const ToastNotification = ( { message } ) =>{
+const ToastNotification = ( { message, ref, push } ) =>{
 	return (
-		<CToast animation={false} autohide={true} visible={true}>
-		  <CToastHeader closeButton>
-		    <div className="fw-bold me-auto"> Notifications </div>
-		  </CToastHeader>
-		  <CToastBody>
-		  		{ message }
-		  </CToastBody>
+		<CToast ref={ref} push = {push} animation={false} className="align-items-center" autohide={true} visible={true} >
+      <div className="d-flex">
+  		  <CToastBody>
+  		  		{ message }
+  		  </CToastBody>
+        <CToastClose className="me-2 m-auto" />
+      </div>
 		</CToast>
 	);
 };

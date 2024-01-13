@@ -46,23 +46,21 @@ import {
   cilUserFemale,
 } from '@coreui/icons'
 
-import ToastNotification from '../notification/ToastNotification'
 
-// Okey manao page indray eto
+const Modify = ( props ) => {
 
-const Ajout = ( props ) =>{
-  
   const[ value, setValue ] = useState("");
-  const[ toasts, setToasts ] = useState(0);
+  const[ id, setId ] = useState(0);
   const toaster = useRef();
   const [toast, setToast] = useState( null );
   const handleChange = ( event ) => {
     setValue( event.target.value );
   };
 
-  const handleAjout = ( endpoint ) => {
+  const handleUpdate = ( endpoint ) => {
+
     let xhttp = new XMLHttpRequest();
-    let url = process.env.REACT_APP_API_URL + endpoint;
+    let url = process.env.REACT_APP_API_URL + endpoint + "/" + id;
     let data = {
       nom : value
     };
@@ -73,22 +71,46 @@ const Ajout = ( props ) =>{
           let response = JSON.parse(this.responseText);
           let message = response.message;
           let save = message.save;
-          setToast( <ToastNotification ref = {toaster} push={ toasts } message = {save} /> )
         }
       }
     };
 
-    xhttp.open("POST" , url, true );
+    xhttp.open("PUT" , url, true );
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send( JSON.stringify(data) );
+  
   };
 
-  return(
+  const getItems = ( id, endpoint ) => {
+    let xhttp = new XMLHttpRequest();
+    let url = process.env.REACT_APP_API_URL + endpoint + "/" + id;
+    console.log(url);
+    xhttp.onreadystatechange = function(){
+      if( this.readyState === 4 ){
+        if( this.status === 200 ){
+          let response = JSON.parse( this.responseText );
+          let data = response.data;
+          let items = data.items;
+          setValue( items.nom );
+        }
+      }
+    };
+
+    xhttp.open("GET" , url, true);
+    xhttp.send();
+  };
+
+  useEffect( () => {
+    getItems(props.id, props.endpoint);
+    setId( props.id );
+  }, [] );
+
+  return (
     <CForm>
       <div className="my-3 col-6" >
         <CFormLabel htmlFor="nom"> { props.title }  </CFormLabel>
-        <CFormInput type="text" onChange={handleChange} id="nom" placeholder="...." />
-        <CButton type="button" onClick={ () => handleAjout( props.endpoint ) } className="my-3"> Ajouter </CButton>
+        <CFormInput type="text" onChange={handleChange} value={ value } id="nom" placeholder="...." />
+        <CButton type="button" onClick={ () => handleUpdate( props.endpoint ) } className="my-3"> Ajouter </CButton>
         { toast }
       </div>
     </CForm>
@@ -96,4 +118,4 @@ const Ajout = ( props ) =>{
 
 };
 
-export default Ajout;
+export default Modify;

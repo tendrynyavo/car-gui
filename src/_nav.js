@@ -38,7 +38,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Ajouter Categorie',
-        to: '/ajouter-categorie'
+        to: '/categorie/ajouter'
       },
     ]
   },
