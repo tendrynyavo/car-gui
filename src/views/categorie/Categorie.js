@@ -43,6 +43,8 @@ import {
   cilUserFemale,
 } from '@coreui/icons'
 
+import { Link } from 'react-router-dom'
+
 const Categorie = (props) => {
   
   const[ categories, setCategories ] = useState([]);
@@ -54,22 +56,32 @@ const Categorie = (props) => {
       if( this.readyState === 4 ){
         if( this.status === 200 ){
           let response = JSON.parse(this.responseText);
-          console.log( response );
           setCategories(response);
         }
       }
     };
-    console.log(url);
+    // console.log(url);
     xhttp.open( "GET" , url, true );
     xhttp.send(null);
   };
 
+  const deleteProducts = ( id, endpoint ) => {
+    let url = process.env.REACT_APP_API_URL + endpoint + "/" + id;
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if( this.readyState === 4 ){
+        if( this.status === 200 ){
+            fetchCategories();
+          }
+      }
+    };
+    xhttp.open( "DELETE" , url , true );
+    xhttp.send(null);
+  };
+
   useEffect( () => {
-    console.log("ETOOOO OHHHHH");
     fetchCategories();
-    console.log( categories.length );
-    categories.map( categorie => console.log(categorie) );
-  }, [categories] );
+  }, [] );
 
   let columns = ["Nom" , "Disponible"];
 
@@ -77,9 +89,11 @@ const Categorie = (props) => {
       <CTable>
         <CTableHead color="light">
           <CTableRow>
-            <CTableHeaderCell scope="col"> # </CTableHeaderCell>
+            <CTableHeaderCell scope="col">  </CTableHeaderCell>
             <CTableHeaderCell scope="col"> Nom </CTableHeaderCell>
             <CTableHeaderCell scope="col"> Etat </CTableHeaderCell>
+            <CTableHeaderCell scope="col">  </CTableHeaderCell>
+            <CTableHeaderCell scope="col">  </CTableHeaderCell>
           </CTableRow>
         </CTableHead>
         <CTableBody>
@@ -87,7 +101,7 @@ const Categorie = (props) => {
               categories.map( (categorie, index) => 
                 <CTableRow key={index}>
                   <CTableHeaderCell scope="row"> 
-                      { index }
+                      { index + 1 }
                   </CTableHeaderCell>
                   <CTableDataCell>
                       {
@@ -98,6 +112,12 @@ const Categorie = (props) => {
                   {
                     (!categorie.deleted) ? "disponible" : "suprimer"
                   }
+                  </CTableDataCell>
+                  <CTableDataCell>
+                      <Link to={ `modifier/${categorie.id}` } > Modifier </Link>
+                  </CTableDataCell>
+                  <CTableDataCell>
+                      <CButton type="button" onClick={ () => deleteProducts( categorie.id, "/api/categorie" ) }> Supprimer </CButton>
                   </CTableDataCell>
                 </CTableRow>
  )
