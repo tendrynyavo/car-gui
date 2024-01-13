@@ -59,10 +59,9 @@ const Categorie = (props) => {
         }
       }
     };
-
+    console.log(url);
     xhttp.open( "GET" , url, true );
     xhttp.send(null);
-
   };
 
   useEffect( () => {
