@@ -26,6 +26,7 @@ const _nav = [
       text: 'NEW',
     },
   },
+
   {
     component: CNavGroup,
     name: 'Categorie',
@@ -42,6 +43,26 @@ const _nav = [
       },
     ]
   },
+
+  {
+    component: CNavGroup,
+    name: 'Carburant',
+    items : [
+      {
+        component: CNavItem,
+        name: 'Liste carburants',
+        to: '/carburant'
+      },
+      {
+        component: CNavItem,
+        name: 'Ajouter carburant',
+        to: '/carburant/ajouter'
+      },
+    ]
+  },
+
+
+
   {
     component: CNavTitle,
     name: 'Theme',

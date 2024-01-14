@@ -60,7 +60,8 @@ const Ajout = ( props ) =>{
     setValue( event.target.value );
   };
 
-  const handleAjout = ( endpoint ) => {
+  const handleAjout = (event,  endpoint ) => {
+    event.preventDefault();
     let xhttp = new XMLHttpRequest();
     let url = process.env.REACT_APP_API_URL + endpoint;
     let data = {
@@ -88,7 +89,7 @@ const Ajout = ( props ) =>{
       <div className="my-3 col-6" >
         <CFormLabel htmlFor="nom"> { props.title }  </CFormLabel>
         <CFormInput type="text" onChange={handleChange} id="nom" placeholder="...." />
-        <CButton type="button" onClick={ () => handleAjout( props.endpoint ) } className="my-3"> Ajouter </CButton>
+        <CButton type="button" onClick={ (event) => handleAjout( event, props.endpoint ) } className="my-3"> Ajouter </CButton>
         { toast }
       </div>
     </CForm>
