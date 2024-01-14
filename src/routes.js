@@ -23,6 +23,12 @@ const ListeMarque = React.lazy(() => import('./views/marque/ListeMarque'))
 const ModifierMarque = React.lazy(() => import('./views/marque/ModifierMarque'))
 const AjoutMarque = React.lazy(() => import('./views/marque/AjoutMarque'))
 
+// Transmission
+const ListeTransmission = React.lazy(() => import('./views/transmission/ListeTransmission'))
+const ModifierTransmission = React.lazy(() => import('./views/transmission/ModifierTransmission'))
+const AjoutTransmission = React.lazy(() => import('./views/transmission/AjoutTransmission'))
+
+
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
 
@@ -91,6 +97,78 @@ const routes = [
   { path: '/modele', name: 'Liste Modele', element: ListeModele },
   { path: '/modele/ajouter', name: 'Ajout Modele', element: AjoutModele },
   { path: '/modele/modifier/:id', exact: true, name: 'Modifier Modele', element: ModifierModele },
+
+  { path: '/transmission', name: 'Liste Transmission', element: ListeTransmission },
+  { path: '/transmission/ajouter', name: 'Ajout Transmission', element: AjoutTransmission },
+  { path: '/transmission/modifier/:id', exact: true, name: 'Modifier Transmission', element: ModifierTransmission },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },
