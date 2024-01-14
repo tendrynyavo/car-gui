@@ -61,6 +61,23 @@ const _nav = [
     ]
   },
 
+  {
+    component: CNavGroup,
+    name: 'Modele',
+    items : [
+      {
+        component: CNavItem,
+        name: 'Liste modele',
+        to: '/modele'
+      },
+      {
+        component: CNavItem,
+        name: 'Ajouter modele',
+        to: '/modele/ajouter'
+      },
+    ]
+  },
+
 
 
   {
