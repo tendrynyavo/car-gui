@@ -77,6 +77,22 @@ const _nav = [
       },
     ]
   },
+  {
+    component: CNavGroup,
+    name: 'Marque',
+    items : [
+      {
+        component: CNavItem,
+        name: 'Liste marque',
+        to: '/marque'
+      },
+      {
+        component: CNavItem,
+        name: 'Ajouter marque',
+        to: '/marque/ajouter'
+      },
+    ]
+  },
 
 
 

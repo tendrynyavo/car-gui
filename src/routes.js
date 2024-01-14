@@ -18,6 +18,10 @@ const ListeModele = React.lazy(() => import('./views/modele/ListeModele'))
 const ModifierModele = React.lazy(() => import('./views/modele/ModifierModele'))
 const AjoutModele = React.lazy(() => import('./views/modele/AjoutModele'))
 
+// Marque
+const ListeMarque = React.lazy(() => import('./views/marque/ListeMarque'))
+const ModifierMarque = React.lazy(() => import('./views/marque/ModifierMarque'))
+const AjoutMarque = React.lazy(() => import('./views/marque/AjoutMarque'))
 
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
@@ -79,6 +83,10 @@ const routes = [
   { path: '/carburant', name: 'Liste carburants', element: ListeCarburant },
   { path: '/carburant/ajouter', name: 'Ajout Carburant', element: AjoutCarburant },
   { path: '/carburant/modifier/:id', exact: true, name: 'Modifier Carburant', element: ModifierCarburant },
+
+  { path: '/marque', name: 'Liste Marque', element: ListeMarque },
+  { path: '/marque/ajouter', name: 'Ajout Marque', element: AjoutMarque },
+  { path: '/marque/modifier/:id', exact: true, name: 'Modifier Marque', element: ModifierMarque },
 
   { path: '/modele', name: 'Liste Modele', element: ListeModele },
   { path: '/modele/ajouter', name: 'Ajout Modele', element: AjoutModele },
