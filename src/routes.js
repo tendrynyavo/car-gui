@@ -1,10 +1,19 @@
 import React from 'react'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
+
+// Categorie
 const Categorie = React.lazy(() => import('./views/categorie/Categorie'))
 const ListeCategorie = React.lazy(() => import('./views/categorie/ListeCategorie'))
 const AjoutCategorie = React.lazy(() => import('./views/categorie/AjoutCategorie'))
 const ModifierCategorie = React.lazy(() => import('./views/categorie/ModifierCategorie'))
+
+// Carburant
+const ListeCarburant = React.lazy(() => import('./views/carburant/ListeCarburant'))
+const ModifierCarburant = React.lazy(() => import('./views/carburant/ModifierCarburant'))
+const AjoutCarburant = React.lazy(() => import('./views/carburant/AjoutCarburant'))
+
+
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
 
@@ -57,9 +66,16 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
+
   { path: '/categorie', name: 'Categorie page', element: ListeCategorie },
   { path: '/categorie/ajouter', name: 'Ajout Categorie', element: AjoutCategorie },
   { path: '/categorie/modifier/:id', exact: true, name: 'Modifier Categorie', element: ModifierCategorie },
+
+  { path: '/carburant', name: 'Liste carburants', element: ListeCarburant },
+  { path: '/carburant/ajouter', name: 'Ajout Carburant', element: AjoutCarburant },
+  { path: '/carburant/modifier/:id', exact: true, name: 'Modifier Carburant', element: ModifierCarburant },
+
+
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },
   { path: '/theme/typography', name: 'Typography', element: Typography },
