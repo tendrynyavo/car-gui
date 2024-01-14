@@ -13,6 +13,11 @@ const ListeCarburant = React.lazy(() => import('./views/carburant/ListeCarburant
 const ModifierCarburant = React.lazy(() => import('./views/carburant/ModifierCarburant'))
 const AjoutCarburant = React.lazy(() => import('./views/carburant/AjoutCarburant'))
 
+// Modele
+const ListeModele = React.lazy(() => import('./views/modele/ListeModele'))
+const ModifierModele = React.lazy(() => import('./views/modele/ModifierModele'))
+const AjoutModele = React.lazy(() => import('./views/modele/AjoutModele'))
+
 
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
@@ -75,6 +80,9 @@ const routes = [
   { path: '/carburant/ajouter', name: 'Ajout Carburant', element: AjoutCarburant },
   { path: '/carburant/modifier/:id', exact: true, name: 'Modifier Carburant', element: ModifierCarburant },
 
+  { path: '/modele', name: 'Liste Modele', element: ListeModele },
+  { path: '/modele/ajouter', name: 'Ajout Modele', element: AjoutModele },
+  { path: '/modele/modifier/:id', exact: true, name: 'Modifier Modele', element: ModifierModele },
 
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },
