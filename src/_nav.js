@@ -93,6 +93,81 @@ const _nav = [
       },
     ]
   },
+  {
+    component: CNavGroup,
+    name: 'Transmission',
+    items : [
+      {
+        component: CNavItem,
+        name: 'Liste Transmission',
+        to: '/transmission'
+      },
+      {
+        component: CNavItem,
+        name: 'Ajouter Transmission',
+        to: '/transmission/ajouter'
+      },
+    ]
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
