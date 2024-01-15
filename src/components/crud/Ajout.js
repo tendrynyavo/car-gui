@@ -63,7 +63,9 @@ const Ajout = ( props ) =>{
   const handleAjout = (event,  endpoint ) => {
     event.preventDefault();
     let xhttp = new XMLHttpRequest();
+    
     let url = process.env.REACT_APP_API_URL + endpoint;
+    
     let data = {
       nom : value
     };
@@ -72,9 +74,13 @@ const Ajout = ( props ) =>{
       if( this.readyState === 4 ){
         if( this.status === 200 ){
           let response = JSON.parse(this.responseText);
+          
+          // Ovaina
           let message = response.message;
           let save = message.save;
           setToast( <ToastNotification ref = {toaster} push={ toasts } message = {save} /> )
+
+
         }
       }
     };
