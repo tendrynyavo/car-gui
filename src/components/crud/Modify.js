@@ -68,9 +68,12 @@ const Modify = ( props ) => {
     xhttp.onreadystatechange = function(){
       if( this.readyState === 4 ){
         if( this.status === 200 ){
+
           let response = JSON.parse(this.responseText);
           let message = response.message;
           let save = message.save;
+
+          
         }
       }
     };

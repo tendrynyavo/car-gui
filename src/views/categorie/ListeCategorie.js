@@ -2,18 +2,21 @@ import React from 'react';
 
 import Liste from '../../components/crud/Liste'
 
-const ListeCategorie = ( props ) =>{
+const ListeCategorie = ( props ) => {
+
 	let columns = [
 		{
 			key: 'id',
 			label: 'Categorie Id',
 			_props: { scope: 'col' }
 		},
+
 		{
 			key: 'nom',
 			label: 'Nom Categorie',
 			_props: { scope: 'col' }
 		},
+
 		{
 			key: 'modify',
 			label: '',
@@ -24,6 +27,7 @@ const ListeCategorie = ( props ) =>{
 			label: '',
 			_props : { scope: 'col' }
 		}
+		
 	];
 
 	return (
