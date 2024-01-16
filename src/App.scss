@@ -1,0 +1,59 @@
+$background: white;
+$green: #E1EDDE;
+$font-color: rgb(0, 101, 0);
+$border-radius: 30px;
+$input: rgba(98, 97, 97, 0.804);
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+
+}
+
+body {
+    background-color: #c9cdd0;
+}
+
+.app {
+    margin-left: 200px;
+    margin-right: 80px;
+    margin-top: 30px;
+}
+
+.sidebar {
+    color: rgba(255, 255, 255, 0.951);
+    height: 92%;
+    width: 120px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    padding-top: 20px;
+    border-radius: 30px;
+    margin-top: 20px;
+    margin-left: 20px;
+    text-align: center;
+    box-shadow: 10px 2px 30px rgba(0, 0, 0, 0.37);
+    
+    i {
+        font-size: 25px;
+    }
+    
+    &__item {
+        margin-top: 50px;
+
+        &__label {
+            font-size: 12px;
+            font-weight: thin;
+            margin-top: 10px;
+        }
+    }
+
+    &__item__first {
+        @extend .sidebar__item;
+        margin-top: 30px;
+    }
+
+}
