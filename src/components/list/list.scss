@@ -1,0 +1,28 @@
+.list-crud {
+    background-color: #212121;
+    padding: 15px;
+    border-radius: 20px;
+    margin-top: 20px;
+    align-content: center;
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    i {
+        font-size: 18px;
+    }
+
+    li {
+        text-align: center;
+        margin: 0px 40px 0px 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__item {
+        width: 50px;
+    }
+}
