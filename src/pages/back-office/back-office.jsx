@@ -1,15 +1,15 @@
-import Sidebar from "../components/sidebar/sidebar";
+import Sidebar from "../../components/sidebar/sidebar";
 import { Outlet } from "react-router-dom";
 
-const Layout = () => {
+const BackOffice = () => {
     return (
-        <>
+        <div className="back">
             <Sidebar />
             <div className="app">
                 <Outlet />
             </div>
-        </>
+        </div>
     );
 }
 
-export default Layout;
+export default BackOffice;

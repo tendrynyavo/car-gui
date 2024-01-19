@@ -1,0 +1,47 @@
+.boite {
+    background-color: #ffffff;
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    border-radius: 20px;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+
+    &::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    &__formulaire {
+        padding: 30px;
+        margin-bottom: 100px;
+
+        &__logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        &__title {
+            margin-bottom: 50px;
+            text-align: center;
+
+            p {
+                font-size: 10px;
+                font-weight: thin;
+            }
+        }
+    }
+
+    &__img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #e9e9e9;
+        border-radius: 20px 0px 0px 20px;
+    }
+
+}

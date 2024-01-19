@@ -6,7 +6,12 @@ const Input = ({label, type, name, placeholder}) => {
             <div className='input__label'>
                 <label>{ label }</label>
             </div>
-            <input className='input__value' type={ type } name={ name } placeholder={ placeholder } />
+            <input 
+                className='input__value' 
+                type={ type } 
+                name={ name } 
+                placeholder={ placeholder }
+            />
         </div>
     );
 }
