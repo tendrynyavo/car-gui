@@ -43,9 +43,7 @@ const Login = () => {
                     />
                 </div>
                 <div className='boite__formulaire__title'>
-                    <h2>
-                        Welcome Back
-                    </h2>
+                    <h2>Welcome Back</h2>
                     <p>Please enter your details</p>
                 </div>
                 <Formulaire inputs={inputs} />

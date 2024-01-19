@@ -5,14 +5,17 @@ import { useParams } from 'react-router-dom';
 import { getList, ajouter } from '../../services/crud/index.js';
 import List from '../formulaire/list-crud.jsx';
 import React from 'react';
+import Loading from '../../pages/loading/loading.jsx';
 
 const Crud = () => {
-
+    
     const {modele} = useParams();
     const [data, setData] = useState([]);
     const [error, setError] = useState("");
-    let [ refresh, setRefresh ] = useState(false);
-
+    const [ isLoading, setIsLoading ] = useState(true);
+    console.log('[debut de composant]', isLoading);
+    
+    
     const inputs = [
         {
             "nom" : "nom",
@@ -23,15 +26,18 @@ const Crud = () => {
     ];
     
     useEffect(() => {
+        console.log(isLoading);
+        setIsLoading(true);
         getList(modele)
         .then((response) => {
             setData(response.data);
-        });   
-    }, [ refresh, modele ]);
+        });
+        setIsLoading(false);
+    }, [modele]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-    
+        
         const formData = new FormData(event.target);
         
         const data = {
@@ -40,7 +46,7 @@ const Crud = () => {
 
         ajouter(data, modele)
         .then(() => {
-            setRefresh( true );
+
         })
         .catch(error => {
             if (error.response) {
@@ -48,7 +54,11 @@ const Crud = () => {
             }
         });
     };
-
+    
+    console.log('[fin de composant]', isLoading);
+    
+    if (isLoading) 
+        return <Loading />
 
     return (
         <div className="crud">
