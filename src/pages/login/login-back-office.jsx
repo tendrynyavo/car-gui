@@ -1,7 +1,10 @@
+import { React, useState } from 'react'
 import Formulaire from '../../components/formulaire/formulaire';
 import './login.scss'
+import { useAuth } from "../../firebase/AuthContext"
+import apiRequest from "../../services/service-api/usersService";
 
-const Login = () => {
+const LoginB = () => {
 
     const inputs = [
         {
@@ -18,6 +21,26 @@ const Login = () => {
             "placeholder": 'Entrer votre mot de passe'
         },
     ]
+    const { login } = useAuth()
+    const [error, setError] = useState("")
+
+    const authentifications = async (e) => {
+        e.preventDefault();
+        const formulaire = e.target;
+        const email = formulaire.querySelector('[name="email"]').value;
+        const password = formulaire.querySelector('[name="password"]').value;
+        try {
+            const user = await login(email, password);
+            if(user) {
+                var requestData = {id: user.uid};
+                var response = await apiRequest('POST', 'authentificationAdmin', requestData);
+                localStorage.setItem('token', response.data.token);
+                setError("Yess")
+            }
+        } catch (error) {
+            setError(error.message)
+        }
+      };
 
     return (
         <div className="boite">
@@ -46,10 +69,10 @@ const Login = () => {
                     <h2>Welcome Back</h2>
                     <p>Please enter your details</p>
                 </div>
-                <Formulaire inputs={inputs} />
+                <Formulaire func={authentifications} inputs={inputs} error={error} />
             </div>
         </div>
     )
 }
 
-export default Login
+export default LoginB

@@ -2,6 +2,7 @@ import Input from "./input-form";
 import Button from "../button/button";
 import './formulaire.scss';
 
+
 const Formulaire = ({func, inputs = [], error}) => {
     return (
         <form onSubmit={ func }>
@@ -21,12 +22,13 @@ const Formulaire = ({func, inputs = [], error}) => {
                     </div>
                 )
             })}
+            <h3 className="error">{ error }</h3>
             <div className='formulaire__btn'>
                 <Button 
                     name="Valider" 
+                    type="submit"
                 />
             </div>
-            <h3>{ error }</h3>
         </form>
     );
 }
