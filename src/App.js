@@ -1,40 +1,46 @@
+import './App.scss';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import Crud from './components/crud/crud.jsx';
+import BackOffice from './pages/back-office/back-office.jsx';
+import Login from './pages/login/login-back-office.jsx';
+import Energie from './pages/back-office/energie/energie.jsx';
+import LayoutMoteur from './pages/back-office/moteur/layout-moteur.jsx';
+import TypeMoteur from './pages/back-office/moteur/type-moteur.jsx';
+import Modele from './pages/back-office/modele/modele.jsx';
+import Design from './pages/back-office/modele/design.jsx';
+import Moteur from './pages/back-office/moteur/moteur.jsx';
+import DesignModele from './pages/back-office/modele/design-modele.jsx';
+import TypeCrud from './pages/back-office/moteur/type.jsx';
+import Test from './test.jsx';
+import LayoutMarque from './pages/back-office/marque/layout-marque.jsx';
 
-import React, { Component, Suspense } from 'react'
-import { HashRouter, Route, Routes } from 'react-router-dom'
-import './scss/style.scss'
-import Categorie from  './views/categorie/Categorie'
-const loading = (
-  <div className="pt-3 text-center">
-    <div className="sk-spinner sk-spinner-pulse"></div>
-  </div>
-)
-
-// Containers
-const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
-
-// Pages
-const Login = React.lazy(() => import('./views/pages/login/Login'))
-const Register = React.lazy(() => import('./views/pages/register/Register'))
-const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
-const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
-
-class App extends Component {
-  render() {
-    return (
-      <HashRouter>
-        <Suspense fallback={loading}>
-          <Routes>
-            <Route exact path="/login" name="Login Page" element={<Login />} />
-            <Route exact path="/register" name="Register Page" element={<Register />} />
-            <Route exact path="/404" name="Page 404" element={<Page404 />} />
-            <Route exact path="/500" name="Page 500" element={<Page500 />} />
-            {/*<Route exact path="/categorie" name="Categorie page" element={<Categorie />} />*/}
-            <Route path="*" name="Home" element={<DefaultLayout />} />
-          </Routes>
-        </Suspense>
-      </HashRouter>
-    )
-  }
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<BackOffice />}>
+          <Route path='/test' element={<Test />} />
+          <Route path='/marque' element={<LayoutMarque />} >
+            <Route index element={<Crud modele={'marque'} />} />
+            <Route path='modele' element={<Modele />} />
+          </Route>
+          <Route path='/categorie' element={<Crud modele={'categorie'} />} />
+          <Route path='/design' element={<Design />} />
+          <Route path='/design-modele' element={<DesignModele />} />
+          <Route path='/energie' element={<Energie />} />
+          <Route path='/moteur' element={<LayoutMoteur />} >
+            <Route index element={<Moteur />} />
+            <Route path='type' element={<TypeCrud />} />
+            <Route path='vitesse' element={<Crud modele={'vitesse'} />} />
+            <Route path='carburant' element={<Crud modele={'carburant'} />} />
+          </Route>
+          <Route path='/moteur-type' element={<TypeMoteur />} />
+        </Route>
+        <Route path='/login' element={<Login />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
