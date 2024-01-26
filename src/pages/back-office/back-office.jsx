@@ -5,23 +5,9 @@ const BackOffice = () => {
 
     const items = [
         {
-            "url" : '/categorie',
-            "nom" : 'Categorie',
-            "icon" : 'bi bi-tag',
-            "first" : true
-        },
-
-        {
-            "url" : '/carburant',
-            "nom" : 'Carburant',
-            "icon" : 'bi bi-fuel-pump',
-            "first" : true
-        },
-
-        {
-            "url" : '/modele',
-            "nom" : 'Modele',
-            "icon" : 'bi bi-box',
+            "url" : '/moteur',
+            "nom" : 'Moteur',
+            "icon" : 'bi bi-ev-front',
             "first" : true
         },
 
@@ -29,6 +15,13 @@ const BackOffice = () => {
             "url" : '/marque',
             "nom" : 'Marque',
             "icon" : 'bi bi-bag-dash',
+            "first" : true
+        },
+
+        {
+            "url" : '/categorie',
+            "nom" : 'Categorie',
+            "icon" : 'bi bi-car-front',
             "first" : true
         }
     ];

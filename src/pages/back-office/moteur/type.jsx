@@ -1,11 +1,12 @@
-import './crud.scss';
-import Form from '../formulaire/form-crud.jsx';
+import Form from '../../../components/formulaire/form-crud.jsx';
+import List from '../../../components/formulaire/list-crud.jsx';
+import Loading from '../../loading/loading.jsx';
 import { useEffect, useState, React } from 'react';
-import { getList, ajouter } from '../../services/crud/index.js';
-import Loading from '../../pages/loading/loading.jsx';
+import { getList, ajouter } from '../../../services/crud';
 import DataTable from 'react-data-table-component';
+import Button from '../../../components/button/button.jsx';
 
-const Crud = ({modele}) => {
+const TypeCrud = () => {
     
     const [data, setData] = useState([]);
     const [error, setError] = useState("");
@@ -14,7 +15,7 @@ const Crud = ({modele}) => {
     const inputs = [
         {
             "nom" : "nom",
-            "label" : modele[0].toUpperCase() + modele.slice(1),
+            "label" : "Nom",
             "type" : "text",
             "placeholder" : "Entre le nom"
         }
@@ -25,20 +26,26 @@ const Crud = ({modele}) => {
             name: "ID",
             selector: row => row.id
         },
+        
         {
             name: "Nom",
             selector: row => row.nom
+        },
+
+        {
+            name: "Ajout de carburant",
+            cell: () => <Button name={'Ajouter'} />,
         }
     ];
     
     useEffect(() => {
         setIsLoading(true);
-        getList(modele + 's')
+        getList('types')
         .then((response) => {
-            setData(response.data);
+            setData(response.data.data.data);
         });
         setIsLoading(false);
-    }, [modele, isLoading]);
+    }, []);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -49,10 +56,9 @@ const Crud = ({modele}) => {
             nom : formData.get("nom")
         };
 
-        setIsLoading(true);
-        ajouter(data, modele + 's')
+        ajouter(data, 'types')
         .then(() => {
-            
+
         })
         .catch(error => {
             if (error.response) {
@@ -68,10 +74,9 @@ const Crud = ({modele}) => {
 
     return (
         <div className="crud">
-            <Form inputs={inputs} func={handleSubmit} error={error} title={`Création de ${modele}`} />
-            {/* <List title={`Liste des ${modele}s`} items={data} /> */}
+            <Form inputs={inputs} func={handleSubmit} error={error} title={`Création de type`} />
             <div className="list">
-                <h2 className='list__label'>{`Liste des ${modele}s`}</h2>
+                <h2 className='list__label'>Liste des types de moteurs</h2>
                 <DataTable
                     className='table'
                     columns={columns}
@@ -85,4 +90,4 @@ const Crud = ({modele}) => {
     );
 }
 
-export default Crud;
+export default TypeCrud;

@@ -1,6 +1,6 @@
 import './list.scss';
 
-const Item = ({id, name, icon}) => {
+const Item = ({labels, icon}) => {
 
     let icons = (
         <>
@@ -20,8 +20,11 @@ const Item = ({id, name, icon}) => {
     return (
         <div className='list-crud'>
             <ul>
-                <li className='list-crud__item'>{ id }</li>
-                <li className='list-crud__item'>{ name }</li>
+                {labels.map((label) => {
+                    return (
+                        <li className='list-crud__item'>{ label }</li>
+                    )
+                })}
                 {icons}
             </ul>
         </div>

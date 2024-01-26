@@ -1,5 +1,3 @@
-import './formulaire.scss';
-
 const Input = ({label, type, name, placeholder}) => {
     return (
         <div className ='input'>

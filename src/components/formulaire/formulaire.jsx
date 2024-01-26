@@ -1,11 +1,13 @@
 import Input from "./input-form";
 import Button from "../button/button";
-import './formulaire.scss';
 
 const Formulaire = ({func, inputs = [], error}) => {
     return (
         <form onSubmit={ func }>
             {inputs.map((input) => {
+
+                
+                
                 return (
                     <div 
                         style={{
@@ -20,6 +22,8 @@ const Formulaire = ({func, inputs = [], error}) => {
                         />
                     </div>
                 )
+
+
             })}
             <div className='formulaire__btn'>
                 <Button 
