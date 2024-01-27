@@ -23,6 +23,13 @@ const BackOffice = () => {
             "nom" : 'Categorie',
             "icon" : 'bi bi-car-front',
             "first" : true
+        },
+
+        {
+            "url" : '/dashboard',
+            "nom" : 'Dashboard',
+            "icon" : 'bi bi-speedometer2',
+            "first" : true
         }
     ];
 

@@ -14,6 +14,8 @@ import DesignModele from './pages/back-office/modele/design-modele.jsx';
 import TypeCrud from './pages/back-office/moteur/type.jsx';
 import Test from './test.jsx';
 import LayoutMarque from './pages/back-office/marque/layout-marque.jsx';
+import Dashboard from './pages/back-office/dashboard/dashboard.jsx';
+import LayoutDashboard from './pages/back-office/dashboard/layout-dashboard.jsx';
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<BackOffice />}>
           <Route path='/test' element={<Test />} />
+          <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/marque' element={<LayoutMarque />} >
             <Route index element={<Crud modele={'marque'} />} />
             <Route path='modele' element={<Modele />} />
@@ -34,6 +37,9 @@ function App() {
             <Route path='type' element={<TypeCrud />} />
             <Route path='vitesse' element={<Crud modele={'vitesse'} />} />
             <Route path='carburant' element={<Crud modele={'carburant'} />} />
+          </Route>
+          <Route path='/dashboard' element={<LayoutDashboard />} >
+            <Route index element={<Dashboard />} />
           </Route>
           <Route path='/moteur-type' element={<TypeMoteur />} />
         </Route>
