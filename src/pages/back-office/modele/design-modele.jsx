@@ -10,7 +10,7 @@ const DesignModele = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        getList('modele')
+        getList('modeles')
         .then((response) => {
             setData(response.data);
         });
