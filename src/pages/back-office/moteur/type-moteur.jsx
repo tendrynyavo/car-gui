@@ -2,7 +2,6 @@ import FormDiv from "../../../components/formulaire/form";
 import Select from "../../../components/formulaire/select";
 import Button from "../../../components/button/button";
 import { useNavigate } from "react-router-dom";
-import Input from "../../../components/formulaire/input-form";
 
 const TypeMoteur = () => {
 

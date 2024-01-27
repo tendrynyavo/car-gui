@@ -27,7 +27,7 @@ const TypeCrud = () => {
     const handleButtonClick = (e, id) => {
         e.preventDefault();
         console.log(id);
-        navigate(`/moteur/type/${id}`);
+        navigate(`/moteur/energie`);
     }
 
     const columns = [
