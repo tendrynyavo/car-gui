@@ -4,6 +4,7 @@ import FormDiv from '../../../components/formulaire/form.jsx';
 import Input from "../../../components/formulaire/input-form";
 import Button from "../../../components/button/button";
 import DataTable from 'react-data-table-component';
+import Select from '../../../components/formulaire/select.jsx';
 
 const Modele = () => {
     
