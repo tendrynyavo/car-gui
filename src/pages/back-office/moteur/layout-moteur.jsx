@@ -19,7 +19,7 @@ const LayoutMoteur = () => {
         {
             url: "/moteur/vitesse",
             label: "Boite de vitesse"
-        },
+        }
     ]
 
     return (
