@@ -106,10 +106,6 @@ $border-radius-input: 7px;
     box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.051);
     height: min-content;
 
-    // &:hover {
-    //     transform: translate(-5px, -5px);
-    // }
-
     &__title {
         margin-bottom: 30px;
         font-weight: bold;
@@ -142,6 +138,11 @@ $border-radius-input: 7px;
 
     .table {
         height: 40vh;
+    }
+
+    i {
+        font-size: 20px;
+        color: black;
     }
 
 }
