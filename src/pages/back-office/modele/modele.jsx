@@ -82,6 +82,15 @@ const Modele = () => {
                             </div>
                         )
                     })}
+                    <div style={{ marginBottom: '35px' }}>
+                        <div className='input__label'>
+                            <label>Carburant</label>
+                        </div>
+                        <Select name={'carburant'}>
+                            <option value="">Essence</option>
+                            <option value="">Diesel</option>
+                        </Select>
+                    </div>
                     <div className='formulaire__btn'>
                         <Button 
                             name="Valider" 
