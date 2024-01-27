@@ -1,9 +1,9 @@
-import Navbar from "./components/navbar/navbar";
+import ListeAnnonce from "./pages/back-office/annonce/liste-annonce";
 
 const Test = () => {
     return (
         <>
-            <Navbar />
+            <ListeAnnonce />
         </>
     );
 }

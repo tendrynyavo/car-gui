@@ -217,3 +217,13 @@ $border-radius-input: 7px;
     }
 
 }
+
+.list-annonce {
+    @extend .list;
+    width: 100vh;
+
+    i {
+        font-size: 25px;
+        color: #ffc72f;
+    }
+}
