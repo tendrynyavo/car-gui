@@ -4,6 +4,7 @@ import FormDiv from '../../../components/formulaire/form.jsx';
 import Input from "../../../components/formulaire/input-form";
 import Button from "../../../components/button/button";
 import DataTable from 'react-data-table-component';
+import Select from '../../../components/formulaire/select.jsx';
 
 const Modele = () => {
     
@@ -88,6 +89,15 @@ const Modele = () => {
                             </div>
                         )
                     })}
+                    <div style={{ marginBottom: '35px' }}>
+                        <div className='input__label'>
+                            <label>Carburant</label>
+                        </div>
+                        <Select name={'carburant'}>
+                            <option value="">Essence</option>
+                            <option value="">Diesel</option>
+                        </Select>
+                    </div>
                     <div className='formulaire__btn'>
                         <Button 
                             name="Valider" 
