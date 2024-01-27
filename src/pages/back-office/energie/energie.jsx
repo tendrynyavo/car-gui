@@ -57,6 +57,7 @@ const Energie = () => {
             name: "ID",
             selector: row => row.id
         },
+
         {
             name: "Nom",
             selector: row => row.nom
@@ -64,7 +65,6 @@ const Energie = () => {
     ];
 
     return (
-
         <div className="crud">
             <FormDiv style={{
             marginLeft: 'auto',
@@ -113,7 +113,6 @@ const Energie = () => {
                 </DataTable>
             </div>
         </div>
-
     );
 }
 

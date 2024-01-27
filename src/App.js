@@ -16,6 +16,8 @@ import Test from './test.jsx';
 import LayoutMarque from './pages/back-office/marque/layout-marque.jsx';
 import Dashboard from './pages/back-office/dashboard/dashboard.jsx';
 import ListeAnnonce from './pages/back-office/annonce/liste-annonce.jsx';
+import Transmission from './pages/back-office/transmission/transmission.jsx';
+import Specificite from './pages/back-office/specificite/specificite.jsx';
 
 function App() {
   return (
@@ -36,6 +38,8 @@ function App() {
           <Route path='/moteur' element={<LayoutMoteur />} >
             <Route index element={<Moteur />} />
             <Route path=':id/energie' element={<Energie />} />
+            <Route path='specificite' element={<Specificite />} />
+            <Route path='transmission' element={<Transmission />} />
             <Route path='type' element={<TypeCrud />} />
             <Route path='vitesse' element={<Crud modele={'vitesse'} />} />
             <Route path='carburant' element={<Crud modele={'carburant'} />} />
