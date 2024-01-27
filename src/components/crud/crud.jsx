@@ -35,7 +35,7 @@ const Crud = ({modele}) => {
         setIsLoading(true);
         getList(modele + 's')
         .then((response) => {
-            setData(response.data.data);
+            setData(response.data);
         });
         setIsLoading(false);
     }, [modele, isLoading]);

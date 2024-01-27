@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.5",
     "bootstrap-icons": "^1.11.3",
+    "chartjs": "^0.3.24",
     "install": "^0.13.0",
     "lottie": "^0.0.1",
     "lottie-web": "^5.12.2",
