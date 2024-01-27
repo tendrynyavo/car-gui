@@ -29,6 +29,12 @@ const Modele = () => {
             "placeholder" : "Entrer le nom du moteur"
         },
         {
+            "nom" : "nom",
+            "label" : "Nom du modele",
+            "type" : "select",
+            "placeholder" : "Entrer le nom du moteur"
+        },
+        {
             "nom" : "annee",
             "label" : "Annee de construction",
             "type" : "date",
