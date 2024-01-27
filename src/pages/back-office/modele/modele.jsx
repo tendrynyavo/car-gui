@@ -1,5 +1,5 @@
 import { useEffect, useState, React } from 'react';
-import { getList } from '../../../services/crud';
+import { getList, ajouter } from '../../../services/crud';
 import FormDiv from '../../../components/formulaire/form.jsx';
 import Input from "../../../components/formulaire/input-form";
 import Button from "../../../components/button/button";
@@ -11,27 +11,51 @@ const Modele = () => {
     const [data, setData] = useState([]);
     const [error, setError] = useState("");
     const [ isLoading, setIsLoading ] = useState(false);
+    const [ marque, setMarque ] = useState([]);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        let formData = new FormData( document.querySelector('form') );
+        let data = {
+            "nom" : formData.get("nom"),
+            "annee" : formData.get("annee"),
+            "marque" : {
+                "id" : formData.get("marque")
+            }
+        };
+
+        setIsLoading(true);
+        ajouter( data, 'modeles' ).then(() => {
+            
+        })
+        .catch(error => {
+            if (error.response) {
+                setError(error.response.data.error);
+            }
+        });
+
+    };
 
     useEffect(() => {
         setIsLoading(true);
         getList('modeles')
         .then((response) => {
-            setData(response.data);
+            let response_data = response.data;
+            let response_inner_data = response_data.data;
+            let modeles = response_inner_data.modeles;
+            let m = response_inner_data.marques;
+            setData(modeles);
+            setMarque(m);
         });
         setIsLoading(false);
-    }, []);
+    }, [ isLoading ]);
+
 
     const inputs = [
         {
             "nom" : "nom",
             "label" : "Nom du modele",
             "type" : "text",
-            "placeholder" : "Entrer le nom du moteur"
-        },
-        {
-            "nom" : "nom",
-            "label" : "Nom du modele",
-            "type" : "select",
             "placeholder" : "Entrer le nom du moteur"
         },
         {
@@ -71,7 +95,7 @@ const Modele = () => {
         }}>
             <FormDiv>
                 <h2 className='formulaire__title'>Création de modele</h2>
-                <form>
+                <form onSubmit = { (event) => handleSubmit(event) }>
                     {inputs.map((input) => {
                         return (
                             <div 
@@ -91,11 +115,17 @@ const Modele = () => {
                     })}
                     <div style={{ marginBottom: '35px' }}>
                         <div className='input__label'>
-                            <label>Carburant</label>
+                            <label>Marque</label>
                         </div>
-                        <Select name={'carburant'}>
-                            <option value="">Essence</option>
-                            <option value="">Diesel</option>
+                        <Select name={'marque'}>
+                            {
+                                marque.map( (marque) => {
+                                    return(
+                                        <option value={ marque.id }> { marque.nom } </option>
+                                    )
+
+                                } )
+                            }
                         </Select>
                     </div>
                     <div className='formulaire__btn'>
@@ -107,7 +137,7 @@ const Modele = () => {
                 </form>
             </FormDiv>
             <div className="list">
-                <h2 className='list__label'>Liste des types de moteurs</h2>
+                <h2 className='list__label'>Liste des modeles</h2>
                 <DataTable
                     className='table'
                     columns={columns}
