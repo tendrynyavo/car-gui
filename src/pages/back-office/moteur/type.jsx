@@ -5,12 +5,15 @@ import { useEffect, useState, React } from 'react';
 import { getList, ajouter } from '../../../services/crud';
 import DataTable from 'react-data-table-component';
 import Button from '../../../components/button/button.jsx';
+import { useNavigate } from "react-router-dom";
+
 
 const TypeCrud = () => {
     
     const [data, setData] = useState([]);
     const [error, setError] = useState("");
     const [ isLoading, setIsLoading ] = useState(false);
+    const navigate = useNavigate();
     
     const inputs = [
         {
@@ -20,6 +23,12 @@ const TypeCrud = () => {
             "placeholder" : "Entre le nom"
         }
     ];
+
+    const handleButtonClick = (e, id) => {
+        e.preventDefault();
+        console.log(id);
+        navigate(`/moteur/type/${id}`);
+    }
 
     const columns = [
         {
@@ -34,7 +43,7 @@ const TypeCrud = () => {
 
         {
             name: "Ajout de carburant",
-            cell: () => <Button name={'Ajouter'} />,
+            cell: (row) => <Button onClick={(e) => handleButtonClick(e, row.id)} name={'Ajouter'} />,
         }
     ];
     
@@ -42,7 +51,7 @@ const TypeCrud = () => {
         setIsLoading(true);
         getList('types')
         .then((response) => {
-            setData(response.data.data.data);
+            setData(response.data);
         });
         setIsLoading(false);
     }, []);

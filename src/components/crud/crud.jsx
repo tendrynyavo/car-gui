@@ -1,9 +1,10 @@
 import './crud.scss';
 import Form from '../formulaire/form-crud.jsx';
 import { useEffect, useState, React } from 'react';
-import { getList, ajouter } from '../../services/crud/index.js';
+import { getList, ajouter, supprimer } from '../../services/crud/index.js';
 import Loading from '../../pages/loading/loading.jsx';
 import DataTable from 'react-data-table-component';
+import { Link } from "react-router-dom";
 
 const Crud = ({modele}) => {
     
@@ -20,6 +21,13 @@ const Crud = ({modele}) => {
         }
     ];
 
+    const deleteById = (e, id) => {
+        e.preventDefault();
+        console.log(id);
+        supprimer(id, modele + 's');
+        setIsLoading(true);
+    }
+
     const columns = [
         {
             name: "ID",
@@ -28,6 +36,10 @@ const Crud = ({modele}) => {
         {
             name: "Nom",
             selector: row => row.nom
+        },
+        {
+            name: "Supprimer",
+            cell: (row) => <Link onClick={(e) => deleteById(e, row.id)}><i className='bi bi-trash'></i></Link>
         }
     ];
     
