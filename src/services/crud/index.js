@@ -21,7 +21,6 @@ export const ajouter = (data, modele) => {
         url: `${process.env.REACT_APP_API_URL}/api/${modele}`,
         data: data
     });
-    // return axios.post(, data);
 }
 
 export const supprimer = (id, modele) => {
