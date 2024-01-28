@@ -17,6 +17,7 @@ defaults.plugins.title.color = "black";
 const Dashboard = () => {
 
   const[ statisticsMonthly, setMonthly ] = useState([]);
+  const[ isLoading, setIsLoading ] = useState(true);
 
   const getMonthlyStatistics = async () => {
     let response = await getStatisticsMonthly();
@@ -26,8 +27,10 @@ const Dashboard = () => {
   };
 
   useEffect( () => {
+    setIsLoading(true);
     getMonthlyStatistics();
-  }, [statisticsMonthly] );
+    setIsLoading(false);
+  }, [isLoading] );
 
     return (
       <div className="dashboard">
