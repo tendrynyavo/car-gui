@@ -74,6 +74,11 @@ const Modele = () => {
         navigate(`/design-modele/${id}`);
     };
 
+    const addMotorToModel = (event, id) => {
+        event.preventDefault();
+        navigate(`/moteur/${id}/specificite`);
+    };
+
     const columns = [
         {
             name: "ID",
@@ -95,8 +100,12 @@ const Modele = () => {
             selector: row => row.annee
         },
         {
-            name: "",
-            cell: (row) => <Button onClick={(e) => handleButtonClick(e, row.id)} name={'Ajouter'} />
+            name: "Categories",
+            cell: (row) => <Button onClick={(e) => handleButtonClick(e, row.id)} name={'Voir'} />
+        },
+        {
+            name: "Moteurs",
+            cell: (row) => <Button onClick={(e) => addMotorToModel(e, row.id)} name={'Voir'} />
         }
     ];
 

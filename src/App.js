@@ -39,7 +39,7 @@ function App() {
           <Route path='/moteur' element={<LayoutMoteur />} >
             <Route index element={<Moteur />} />
             <Route path=':id/energie' element={<Energie />} />
-            <Route path='specificite' element={<Specificite />} />
+            <Route path=':id/specificite' element={<Specificite />} />
             <Route path='transmission' element={<Transmission />} />
             <Route path='type' element={<TypeCrud />} />
             <Route path='vitesse' element={<Crud modele={'vitesse'} />} />
@@ -53,7 +53,7 @@ function App() {
             <Route path='caracteristique' element={<Crud modele={'caracteristique'} />} />
           </Route>
         </Route>
-        {/* <Route path='/login' element={<Login />} /> */}
+        <Route path='/login' element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
