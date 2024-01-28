@@ -37,6 +37,13 @@ const BackOffice = () => {
             "nom" : 'Annonce',
             "icon" : 'bi bi-envelope-paper',
             "first" : true
+        },
+
+        {
+            "url" : '/parametre',
+            "nom" : 'Parametre',
+            "icon" : 'bi bi-gear-wide-connected',
+            "first" : true
         }
     ];
 

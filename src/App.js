@@ -18,6 +18,7 @@ import Dashboard from './pages/back-office/dashboard/dashboard.jsx';
 import ListeAnnonce from './pages/back-office/annonce/liste-annonce.jsx';
 import Transmission from './pages/back-office/transmission/transmission.jsx';
 import Specificite from './pages/back-office/specificite/specificite.jsx';
+import LayoutAutre from './pages/back-office/autre/layout-autre.jsx';
 
 function App() {
   return (
@@ -46,8 +47,13 @@ function App() {
           </Route>
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/moteur-type' element={<TypeMoteur />} />
+          <Route path='/parametre' element={<LayoutAutre />} >
+            <Route index element={<Crud modele={'lieu'} />} />
+            <Route path='couleur' element={<Crud modele={'couleur'} />} />
+            <Route path='caracteristique' element={<Crud modele={'caracteristique'} />} />
+          </Route>
         </Route>
-        <Route path='/login' element={<Login />} />
+        {/* <Route path='/login' element={<Login />} /> */}
       </Routes>
     </BrowserRouter>
   );
