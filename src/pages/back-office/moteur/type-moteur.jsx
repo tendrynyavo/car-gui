@@ -2,9 +2,10 @@ import FormDiv from "../../../components/formulaire/form";
 import Select from "../../../components/formulaire/select";
 import Button from "../../../components/button/button";
 import { useNavigate } from "react-router-dom";
+import {useState} from "react";
 
 const TypeMoteur = () => {
-
+    const[engines, setEngines] = useState([]);
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
@@ -32,8 +33,15 @@ const TypeMoteur = () => {
                         <label>Type de moteur</label>
                     </div>
                     <Select name={'type'}>
-                        <option value="1">Moteur à combustion</option>
-                        <option value="2">Moteur éléctrique</option>
+                        {
+                            engines.map( engine => {
+                                return(
+                                    <option value={engine.id}>
+                                        { engine.nom }
+                                    </option>
+                                )
+                            } )
+                        }
                     </Select>
                 </div>
                 <div className='formulaire__btn'>

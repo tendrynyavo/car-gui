@@ -5,6 +5,9 @@ import Input from "../../../components/formulaire/input-form";
 import Button from "../../../components/button/button";
 import DataTable from 'react-data-table-component';
 import Select from '../../../components/formulaire/select.jsx';
+import { useNavigate } from "react-router-dom";
+
+// import Button from '../../../components/button/button.jsx';
 
 const Modele = () => {
     
@@ -12,6 +15,7 @@ const Modele = () => {
     const [error, setError] = useState("");
     const [ isLoading, setIsLoading ] = useState(false);
     const [ marque, setMarque ] = useState([]);
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -19,9 +23,8 @@ const Modele = () => {
         let data = {
             "nom" : formData.get("nom"),
             "annee" : formData.get("annee"),
-            "marque" : {
-                "id" : formData.get("marque")
-            }
+            "marque" : formData.get("marque")
+            
         };
 
         setIsLoading(true);
@@ -66,6 +69,16 @@ const Modele = () => {
         },
     ];
 
+    const handleButtonClick = (event, id) => {
+        event.preventDefault();
+        navigate(`/design-modele/${id}`);
+    };
+
+    const addMotorToModel = (event, id) => {
+        event.preventDefault();
+        navigate(`/moteur/${id}/specificite`);
+    };
+
     const columns = [
         {
             name: "ID",
@@ -86,6 +99,14 @@ const Modele = () => {
             name: "Annee",
             selector: row => row.annee
         },
+        {
+            name: "Categories",
+            cell: (row) => <Button onClick={(e) => handleButtonClick(e, row.id)} name={'Voir'} />
+        },
+        {
+            name: "Moteurs",
+            cell: (row) => <Button onClick={(e) => addMotorToModel(e, row.id)} name={'Voir'} />
+        }
     ];
 
     return (

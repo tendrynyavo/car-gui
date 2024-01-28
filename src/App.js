@@ -34,13 +34,13 @@ function App() {
           </Route>
           <Route path='/categorie' element={<Crud modele={'categorie'} />} />
           <Route path='/design' element={<Design />} />
-          <Route path='/design-modele' element={<DesignModele />} />
+          <Route path='/design-modele/:id' element={<DesignModele />} />
           <Route path='/energie' element={<Energie />} />
           <Route path='/moteur' element={<LayoutMoteur />} >
             <Route index element={<Moteur />} />
             <Route path=':id/energie' element={<Energie />} />
-            <Route path='specificite' element={<Specificite />} />
-            <Route path='transmission' element={<Transmission />} />
+            <Route path=':id/specificite' element={<Specificite />} />
+            <Route path=':idMoteur/transmission' element={<Transmission />} />
             <Route path='type' element={<TypeCrud />} />
             <Route path='vitesse' element={<Crud modele={'vitesse'} />} />
             <Route path='carburant' element={<Crud modele={'carburant'} />} />
