@@ -33,7 +33,7 @@ function App() {
           </Route>
           <Route path='/categorie' element={<Crud modele={'categorie'} />} />
           <Route path='/design' element={<Design />} />
-          <Route path='/design-modele' element={<DesignModele />} />
+          <Route path='/design-modele/:id' element={<DesignModele />} />
           <Route path='/energie' element={<Energie />} />
           <Route path='/moteur' element={<LayoutMoteur />} >
             <Route index element={<Moteur />} />
