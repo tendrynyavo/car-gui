@@ -35,4 +35,17 @@ export const supprimer = (id, modele) => {
         method: "DELETE",
         url: `${process.env.REACT_APP_API_URL}/api/${modele}`
     });
+    // return axios.delete(`${process.env.REACT_APP_API_URL}/api/${modele}/${id}`);
 }
+
+export const executeRequest = ( method, modele, data ) => {
+    let headers = {
+        Authorization : `Bearer ${localStorage.getItem('token')}`
+    };
+    return axios.request({
+        headers: headers,
+        method: method,
+        url: `${process.env.REACT_APP_API_URL}/api/${modele}`,
+        data: data
+    });
+};
