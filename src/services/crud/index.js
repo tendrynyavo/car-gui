@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 
-console.log(`Bearer ${localStorage.getItem('token')}`);
+console.log(`Bearer ${sessionStorage.getItem('token')}`);
 
 export const getList = (modele) => {
     let headers = {
-        Authorization : `Bearer ${localStorage.getItem('token')}`
+        Authorization : `Bearer ${sessionStorage.getItem('token')}`
     };
     return axios.request({
         headers : headers,
@@ -16,7 +16,7 @@ export const getList = (modele) => {
 
 export const ajouter = (data, modele) => {
     let headers = {
-        Authorization : `Bearer ${localStorage.getItem('token')}`
+        Authorization : `Bearer ${sessionStorage.getItem('token')}`
     };
     return axios.request({
         headers : headers,
@@ -28,7 +28,7 @@ export const ajouter = (data, modele) => {
 
 export const supprimer = (id, modele) => {
     let headers = {
-        Authorization : `Bearer ${localStorage.getItem('token')}`
+        Authorization : `Bearer ${sessionStorage.getItem('token')}`
     };
     return axios.request({
         headers : headers,
@@ -40,7 +40,7 @@ export const supprimer = (id, modele) => {
 
 export const executeRequest = ( method, modele, data ) => {
     let headers = {
-        Authorization : `Bearer ${localStorage.getItem('token')}`
+        Authorization : `Bearer ${sessionStorage.getItem('token')}`
     };
     return axios.request({
         headers: headers,

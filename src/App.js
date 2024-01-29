@@ -62,6 +62,7 @@ function App() {
             <Route path='caracteristique' element={<Crud modele={'caracteristique'} />} />
           </Route>
         </Route>
+        {/* <Route path='/login' element={<Login />} />> */}
       </Routes>
   );
 }

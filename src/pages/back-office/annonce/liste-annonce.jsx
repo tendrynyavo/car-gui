@@ -11,6 +11,7 @@ const ListeAnnonce = () => {
 
     const navigate = useNavigate();
     const [annonces , setAnnonces] = useState([]);
+    const [annoncesValider , setAnnoncesValider] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     const handleButtonClick = (e, id) => {
@@ -33,9 +34,19 @@ const ListeAnnonce = () => {
         } );
     };
 
+    const fetchValidateAnnouncement = () => {
+        let modele = "annonce/validate";
+        let a = getList( modele );
+        a.then( response => {
+            setAnnoncesValider(response.data)
+        } );
+    };
+
+
     useEffect( () => {
         setIsLoading(true);
         fetchNotValidateAnnouncement();
+        fetchValidateAnnouncement();
         setIsLoading(false);
     }, [isLoading] );
 
@@ -75,6 +86,11 @@ const ListeAnnonce = () => {
         }
     ];
 
+    const cols = columns.slice( 0, columns.length - 1);
+    cols.push({
+        name : "Prix",
+        selector: row => row.prix
+    });
 
     const data = [
         {
@@ -126,9 +142,10 @@ const ListeAnnonce = () => {
     ];
 
     return (
-        <div className="crud">
+        <>
+        <div className="crud" >
             <div className="list-annonce">
-                <h2 className='list__label'>Liste des annonces</h2>
+                <h2 className='list__label'>Liste des annonces Non valides</h2>
                 <DataTable
                     className='table'
                     columns={columns}
@@ -139,20 +156,25 @@ const ListeAnnonce = () => {
                 </DataTable>
                     {/* Information anle vaika no alatsaka eto */}
             </div>
-            <FormDiv style={{
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            marginBottom: '20px',
-            width: '40vh', 
-            display: 'flex',
-            justifyContent: 'center'
+    </div>
+    <div className="crud">
+            <div className="list-annonce" style={{
+            marginTop : '1%'
         }}>
-                <form>    
-                    <h2 className='formulaire__title'> Annonce :  </h2>
-                    {/* <h3></h3> */}
-                </form>
-            </FormDiv>
-        </div>
+                <h2 className="list__label"> Liste des annonces valides </h2>
+                <DataTable
+                    className="table"
+                    columns = { cols }
+                    data = { (annoncesValider.length > 0) ? annoncesValider : [] }
+                    pagination
+                    fixedHeader
+                >    
+                </DataTable>
+            </div>
+        
+    </div>
+        
+        </>
     );
 }
 
