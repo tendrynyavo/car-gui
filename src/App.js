@@ -61,8 +61,8 @@ function App() {
             <Route path='couleur' element={<Crud modele={'couleur'} />} />
             <Route path='caracteristique' element={<Crud modele={'caracteristique'} />} />
           </Route>
+          {/* <Route path='/login' element={<Login />} /> */}
         </Route>
-        {/* <Route path='/login' element={<Login />} />> */}
       </Routes>
   );
 }
