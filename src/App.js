@@ -20,7 +20,6 @@ import Transmission from './pages/back-office/transmission/transmission.jsx';
 import Specificite from './pages/back-office/specificite/specificite.jsx';
 import LayoutAutre from './pages/back-office/autre/layout-autre.jsx';
 import useToken from './hooks/useToken.js';
-import { useEffect } from 'react';
 
 function App() {
 

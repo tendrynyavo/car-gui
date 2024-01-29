@@ -143,7 +143,7 @@ const Moteur = () => {
                 marginLeft: 'auto',
                 marginRight: 'auto',
                 marginBottom: '25px',
-                width: '45vh', 
+                width: '40vh', 
                 display: 'flex',
                 justifyContent: 'center'
             }}>
@@ -217,7 +217,11 @@ const Moteur = () => {
                     </div>
                 </form>
             </FormDiv>
-            <div className="list">
+            <div className="list"
+                style={{
+                    width: '40%',
+                }}    
+            >
                 <h2 className='list__label'>Liste des Moteurs disponibles</h2>
                 <DataTable
                     className='table'
