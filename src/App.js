@@ -32,7 +32,7 @@ function App() {
   
   return (
       <Routes>
-        <Route path="/" element={<BackOffice />}>
+        <Route path="/" element={<BackOffice setToken={setToken} />}>
           <Route path='/test' element={<Test />} />
           <Route path='/annonce' element={<ListeAnnonce />} />
           <Route path='/dashboard' element={<Dashboard />} />

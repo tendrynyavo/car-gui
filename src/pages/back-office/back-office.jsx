@@ -1,8 +1,8 @@
 import Sidebar from "../../components/sidebar/sidebar";
 import { Outlet } from "react-router-dom";
-import Login from "../login/login-back-office";
+import Button from "../../components/button/button";
 
-const BackOffice = () => {
+const BackOffice = ({ setToken }) => {
 
     const items = [
         {
@@ -48,10 +48,23 @@ const BackOffice = () => {
         }
     ];
 
+    const logOut = (e) => {
+        e.preventDefault();
+        sessionStorage.clear();
+        setToken(null);
+    }
+
     return (
         <div className="back">
             <Sidebar items={ items } />
             <div className="app">
+                <div
+                    style={{
+                        float: "right",
+                    }}
+                >
+                    <Button name={'Log-out'} onClick={(e) => logOut(e)} />
+                </div>
                 <Outlet />
             </div>
         </div>
