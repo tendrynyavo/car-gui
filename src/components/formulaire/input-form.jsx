@@ -1,4 +1,4 @@
-const Input = ({label, type, name, placeholder}) => {
+const Input = ({label, type, name, placeholder, value, disabled}) => {
     return (
         <div className ='input'>
             <div className='input__label'>
@@ -9,6 +9,8 @@ const Input = ({label, type, name, placeholder}) => {
                 type={ type } 
                 name={ name } 
                 placeholder={ placeholder }
+                value = {value}
+                disabled = { disabled && disabled }
             />
         </div>
     );

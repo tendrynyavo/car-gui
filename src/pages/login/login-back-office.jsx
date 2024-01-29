@@ -1,9 +1,9 @@
 import Formulaire from '../../components/formulaire/formulaire';
 import './login.scss';
 import { useState, React } from 'react';
-import { login } from '../../services/login';
 import { useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
+import usersAPI from "../../services/login/usersService";
 
 const Login = ({ setToken }) => {
     
@@ -36,17 +36,13 @@ const Login = ({ setToken }) => {
             'password' : formData.get("password"),
         };
 
-        login(data)
-        .then((response) => {
-            if (response.status === 200) {
-                setToken(response.data.data.token);
-            }
-        })
-        .catch(error => {
-            if (error.response) {
-                setError(error.response.data.error);
-            }
-        });
+        try {
+            var response = await usersAPI('POST', 'authentificationAdmin', data);
+            setToken(response.data.token);
+        } catch (error) {
+            console.log(error.response.data.errors.exception);
+            setError(error.response.data.errors.exception);
+        }
     };
 
     return (
