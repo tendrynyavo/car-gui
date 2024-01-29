@@ -19,10 +19,19 @@ import ListeAnnonce from './pages/back-office/annonce/liste-annonce.jsx';
 import Transmission from './pages/back-office/transmission/transmission.jsx';
 import Specificite from './pages/back-office/specificite/specificite.jsx';
 import LayoutAutre from './pages/back-office/autre/layout-autre.jsx';
+import useToken from './hooks/useToken.js';
+import { useEffect } from 'react';
 
 function App() {
+
+  const {token, setToken} = useToken();
+
+  
+  if (!token) {
+    return <Login setToken={setToken} />;
+  }
+  
   return (
-    <BrowserRouter>
       <Routes>
         <Route path="/" element={<BackOffice />}>
           <Route path='/test' element={<Test />} />
@@ -53,9 +62,7 @@ function App() {
             <Route path='caracteristique' element={<Crud modele={'caracteristique'} />} />
           </Route>
         </Route>
-        <Route path='/login' element={<Login />} />
       </Routes>
-    </BrowserRouter>
   );
 }
 
