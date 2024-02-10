@@ -20,6 +20,7 @@ const Formulaire = ({func, inputs = [], error}) => {
                             label={ input.label } 
                             type={ input.type } 
                             placeholder={ input.placeholder } 
+                            value={ input.value } 
                         />
                     </div>
                 )

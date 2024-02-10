@@ -16,13 +16,15 @@ const Login = ({ setToken }) => {
             "label": "Email",
             "type": "email",
             "placeholder": 'Entrer votre email',
+            "value": '',
         },
 
         {
             "nom": "password",
             "label": "Mot de passe",
             "type": "password",
-            "placeholder": 'Entrer votre mot de passe'
+            "placeholder": 'Entrer votre mot de passe',
+            "value": 'janne!!!'
         },
     ];
 
